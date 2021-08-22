@@ -44,5 +44,5 @@ shared: $(SRC) $(LPATHS)
 	$(CC) -o $(LIB) $(SRC) $(CFLAGS) $(LFLAGS)
 
 clean:
-	rm -r $(LDIR) && rm imgtool/imgtool
+	rm -r $(LDIR) ; rm imgtool/imgtool
 	
