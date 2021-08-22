@@ -3,7 +3,7 @@
 STD=-std=c99
 WFLAGS=-Wall -Wextra
 OPT=-O2
-IDIR=-I. -Iinclude -Iglee/src/glee_common.h
+IDIR=-I. -Iinclude
 CC=gcc
 NAME=libgleex
 SRC=src/*.c
@@ -44,5 +44,5 @@ shared: $(SRC) $(LPATHS)
 	$(CC) -o $(LIB) $(SRC) $(CFLAGS) $(LFLAGS)
 
 clean:
-	rm -r $(LDIR) && rm $(NAME).a && rm imgtool/imgtool
+	rm -r $(LDIR) && rm imgtool/imgtool
 	
