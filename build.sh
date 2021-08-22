@@ -33,6 +33,7 @@ linux=(
 )
 
 mac=(
+    -Wl,-all_load
     -framework OpenGL
     # -mmacos-version-min=10.9
 )
@@ -46,7 +47,7 @@ fail_os() {
 }
 
 mac_dlib() {
-    $cc ${flags[*]} ${inc[*]} ${lib[*]} ${mac[*]} -dynamiclib $src -o $name.dylib &&\
+    $cc ${flags[*]} ${inc[*]} ${mac[*]} ${lib[*]} -dynamiclib $src -o $name.dylib &&\
     install_name_tool -id @executable_path/$name.dylib $name.dylib 
 }
 

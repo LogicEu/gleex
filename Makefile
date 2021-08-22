@@ -14,7 +14,8 @@ LIBS=$(SLIB) $(DLIB)
 LDIR=lib
 LSTATIC=$(patsubst %,lib%.a,$(SLIB))
 LPATHS=$(patsubst %,$(LDIR)/%,$(LSTATIC))
-LFLAGS=$(patsubst %,-L%,$(LDIR))
+LFLAGS= $(patsubst %,-L%,$(LDIR)/)
+LFLAGS += -Wl,-all_load
 LFLAGS += $(patsubst %,-l%,$(LIBS))
 
 CFLAGS=$(STD) $(WFLAGS) $(OPT) $(IDIR)
