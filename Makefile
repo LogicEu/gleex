@@ -15,19 +15,21 @@ LDIR=lib
 LSTATIC=$(patsubst %,lib%.a,$(SLIB))
 LPATHS=$(patsubst %,$(LDIR)/%,$(LSTATIC))
 LFLAGS= $(patsubst %,-L%,$(LDIR)/)
-LFLAGS += -Wl,-all_load
 LFLAGS += $(patsubst %,-l%,$(LIBS))
 
-CFLAGS=$(STD) $(WFLAGS) $(OPT) $(IDIR)
 OS=$(shell uname -s)
 
 ifeq ($(OS),Darwin)
 	LFLAGS += -framework OpenGL -dynamiclib
+    LFLAGS=-Wl,-all_load $(LFLAGS)
 	LIB=$(NAME).dylib
 else
 	LFLAGS += -lGL -lGLEW -shared -fPIC
 	LIB=$(NAME).so
 endif
+
+CFLAGS=$(STD) $(WFLAGS) $(OPT) $(IDIR)
+
 
 $(NAME).a: $(SRC)
 	$(CC) $(CFLAGS) -c $^ && ar -crv $@ *.o && rm *.o
