@@ -1,0 +1,6 @@
+[submodule "glee"]
+	path = glee
+	url = git@github.com:LogicEu/glee.git
+[submodule "imgtool"]
+	path = imgtool
+	url = git@github.com:LogicEu/imgtool.git
