@@ -128,3 +128,12 @@ texture_t texture_cubemap(char** paths)
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     return texture;
 }
+
+texture_t texture_color(const unsigned int width, const unsigned int height,
+        const uint8_t* restrict color)
+{
+    bmp_t bmp = bmp_color(width, height, 4, color);
+    texture_t texture = texture_from_bmp(&bmp);
+    bmp_free(&bmp);
+    return texture;
+}

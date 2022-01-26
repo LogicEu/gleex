@@ -59,6 +59,7 @@ texture_t texture_from_bmp(const bmp_t* bmp);
 texture_t texture_atlas(const bmp_t* bmp);
 texture_t texture_framebuffer(unsigned int fbo);
 texture_t texture_cubemap(char** paths);
+texture_t texture_color(const unsigned int width, const unsigned int height, const uint8_t* color);
 void texture_remap(const texture_t* texture, const bmp_t* bitmap);
 
 /*
