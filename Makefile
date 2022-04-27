@@ -10,6 +10,8 @@ SRC=src/*.c
 DLIB=glfw z png jpeg freetype
 SLIB=glee imgtool
 
+SCRIPT=build.sh
+
 LIBS=$(SLIB) $(DLIB)
 LDIR=lib
 LSTATIC=$(patsubst %,lib%.a,$(SLIB))
@@ -31,10 +33,10 @@ CFLAGS=$(STD) $(WFLAGS) $(OPT) $(IDIR)
 
 
 $(NAME).a: $(SRC)
-	$(CC) $(CFLAGS) -c $^ && ar -crv $@ *.o && rm *.o
+	$(CC) $(CFLAGS) -c $^ && ar -cr $@ *.o && rm *.o
 
 $(LDIR):
-	mkdir $@
+	@[ -d $@ ] || mkdir $@ && echo "mkdir $@"
 
 $(LDIR)%.a: %
 	cd $^ && make && mv $@ ../
@@ -45,6 +47,12 @@ $(LDIR)/$(LDIR)%.a: $(LDIR)%.a $(LDIR)
 shared: $(SRC) $(LPATHS)
 	$(CC) -o $(LIB) $(SRC) $(CFLAGS) $(LFLAGS)
 
-clean:
-	rm -r $(LDIR)
+clean: $(SCRIPT)
+	./$^ $@
+
+install: $(SCRIPT)
+	./$^ $@
+
+uninstall: $(SCRIPT)
+	./$^ $@
 	
