@@ -31,7 +31,6 @@ endif
 
 CFLAGS=$(STD) $(WFLAGS) $(OPT) $(IDIR)
 
-
 $(NAME).a: $(SRC)
 	$(CC) $(CFLAGS) -c $^ && ar -cr $@ *.o && rm *.o
 

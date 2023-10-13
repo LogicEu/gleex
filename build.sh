@@ -35,7 +35,6 @@ linux=(
 mac=(
     -Wl,-all_load
     -framework OpenGL
-    # -mmacos-version-min=10.10
 )
 
 shared() {
